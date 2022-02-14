@@ -1,20 +1,29 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+
+import { Provider, useSelector } from 'react-redux';
+import { store } from './store';
+import { select } from './store/select';
+import { AppStages } from './store/view/view.types';
+import Intro from './screens/Intro/Intro';
+import { Fragment } from 'react';
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+
+	const Content = () => {
+		const stage = useSelector(select.view.stage);
+		
+		return (
+			<Fragment>
+				{stage === AppStages.intro && <Intro />}
+			</Fragment>
+			)
+
+	};
+
+	return (
+		<Provider store={store}>
+			<Content />
+		</Provider>
+	);
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+
