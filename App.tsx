@@ -5,6 +5,8 @@ import { select } from './store/select';
 import { AppStages } from './store/view/view.types';
 import Intro from './screens/Intro/Intro';
 import { Fragment } from 'react';
+import Login from './screens/Login/Login';
+import Items from './screens/Items';
 
 export default function App() {
 
@@ -13,7 +15,9 @@ export default function App() {
 		
 		return (
 			<Fragment>
-				{stage === AppStages.intro && <Intro />}
+				{stage === AppStages.Intro && <Intro />}
+				{stage === AppStages.Login && <Login />}
+				{stage === AppStages.Items && <Items />}
 			</Fragment>
 			)
 

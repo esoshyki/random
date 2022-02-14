@@ -6,15 +6,11 @@ import Animated, {
 	useSharedValue,
 	useAnimatedStyle,
 	withTiming,
-	withRepeat,
 	withSequence,
-	withDelay,
-	set,
-	withSpring,
-	Easing
   } from 'react-native-reanimated';
-import { Asset } from 'expo-asset';
-import { fadeIn, fadeOut } from '../../styles/animations';
+import { useDispatch } from 'react-redux';
+import { SetAppStage } from '../../store/view/view.actions';
+import { AppStages } from '../../store/view/view.types';
 
 
 enum introStages {
@@ -25,8 +21,9 @@ enum introStages {
 
 const Intro = () => {
 
+	const dispatch = useDispatch();
+
     const [stage, setStage] = useState<introStages | null>(introStages.title);
-	const [opacity, setOpacity] = useState(0);
 	const [assets, error] = useAssets([
 		require("../../assets/logo.png")
 	]);
@@ -39,8 +36,11 @@ const Intro = () => {
 		}
 		if (stage === introStages.congratz) {
 			return setStage(introStages.icon)
+		};
+		if (stage === introStages.icon) {
+			console.log("here");
+			return dispatch(SetAppStage(AppStages.Login))
 		}
-
 	}
 
 	const restoreOpacity = () => {
@@ -50,7 +50,6 @@ const Intro = () => {
 	};
 
     const animatedStyles = useAnimatedStyle(() => {
-
 		return {
 			opacity: hidden.value
 		}
@@ -62,7 +61,7 @@ const Intro = () => {
 		setTimeout(() => {
 			nextStage()
 		}, 7000)
-	}, [stage])
+	}, [stage, dispatch])
 
     return (
         <View style={styles.container}>
@@ -80,7 +79,7 @@ const Intro = () => {
 				<Animated.View 
 					style={animatedStyles}>
 					<Text style={styles.title}>
-						Congratz
+						ESOTERIC-SOFT (c)
 					</Text>
 				</Animated.View>
 			)}
@@ -99,6 +98,7 @@ const Intro = () => {
 						source={assets[0]} 
 						width={100} 
 						height={80} /> : null}
+					<Text>Magic Random</Text>
 				</Animated.View>
 			)}
 
@@ -107,7 +107,6 @@ const Intro = () => {
     )
 };
 
-
 const styles = StyleSheet.create({
     container: {
       	flex: 1,  
@@ -115,7 +114,6 @@ const styles = StyleSheet.create({
       	alignItems: 'center',
       	justifyContent: 'center',
     },
-
  
     title: {
       	fontWeight: "700"
