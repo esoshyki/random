@@ -1,7 +1,8 @@
 export enum AppStages {
     Intro = "intro",
     Login = "login",
-    Items = "items"
+    Items = "items",
+    Wheel = "wheel",
 };
 
 export type ViewState = {

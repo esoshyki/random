@@ -10,6 +10,11 @@ import { colors } from "../../styles/colors";
 import Button from "../../components/Button";
 import { removeItem, toggleSelectedItems } from "../../store/items/items.action";
 import ColorPicker from "../../components/ColorPicker/ColorPicker";
+import BottomLayoutButton from "../../components/Button/BottomLayoutButton";
+import { useState } from "react";
+import { theme } from "../../styles/theme";
+import { SetAppStage } from "../../store/view/view.actions";
+import { AppStages } from "../../store/view/view.types";
 
 const Items = () => {
 
@@ -18,6 +23,7 @@ const Items = () => {
     const items = useSelector(select.items.items);
     const showColorPickerFor = useSelector(select.view.setColorPickerFor);
     const selected = useSelector(select.items.selected);
+    const [error, setError] = useState("");
 
     const onPress = (idx: number) => {
         dispatch(toggleSelectedItems(
@@ -31,6 +37,11 @@ const Items = () => {
     };
 
     const start = () => {
+        if (items.length < 1) {
+            setError("The wheel should have at least two items")
+        } else {
+            dispatch(SetAppStage(AppStages.Wheel))
+        }
         console.log("START!")
     };
 
@@ -52,7 +63,6 @@ const Items = () => {
                         justifyContent: "flex-start", 
                         alignItems: "center",
                     },
-                    
                 ]}
                 >
                 <View style={styles.itemsContainer}>
@@ -74,9 +84,19 @@ const Items = () => {
                     ))}
                 </View>
 
-            </ScrollView>
+                {error ? (
+                    <Text style={theme.typography.error}>
+                        {error}
+                    </Text>) : null 
+                }
 
-            <Button title="Get random" onPress={start}/>
+            </ScrollView>
+            
+
+            <BottomLayoutButton 
+                title="Start"
+                onPress={start}
+            />
 
             {typeof showColorPickerFor === "number" ? <ColorPicker /> : null}
             

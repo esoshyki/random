@@ -25,7 +25,7 @@ const ColorPicker = () => {
     const onClick = (color: string) => {
         if (typeof showColorPickerFor === "number") {
             dispatch(changeItemColor({
-                title: items[showColorPickerFor].title,
+                idx: showColorPickerFor,
                 color
             }))
         };

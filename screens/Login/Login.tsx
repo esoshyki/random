@@ -1,4 +1,4 @@
-import { Text, Pressable  } from "react-native";
+import { Text, Pressable, View, StyleSheet, Dimensions  } from "react-native";
 import Animated, { useAnimatedStyle, useSharedValue, withTiming } from "react-native-reanimated";
 import { fadeIn } from "../../styles/animations";
 import { Styles } from "../../styles";
@@ -8,6 +8,7 @@ import { changeAppStage } from "../../store/view/view.actions";
 import { AppStages } from "../../store/view/view.types";
 import { select } from "../../store/select";
 import { useEffect } from "react";
+import BottomLayoutButton from "../../components/Button/BottomLayoutButton";
 
 const Login = () => {
 
@@ -40,12 +41,13 @@ const Login = () => {
             >
             <Text>Login</Text>
 
-            <Button  
+            <BottomLayoutButton 
                 onPress={skipLogin}
                 title="SKIP"
-                />
+            />
         </Animated.View>
     )
 };
+
 
 export default Login;

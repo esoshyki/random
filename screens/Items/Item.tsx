@@ -15,7 +15,6 @@ const Item = ({ data, idx } : Props) => {
     const dispatch = useDispatch();
 
     const onPress = () => {
-        console.log(idx);
         dispatch(toggleColorPicker(idx))
     }
 
@@ -23,10 +22,7 @@ const Item = ({ data, idx } : Props) => {
         <Animated.View style={
             styles.itemContainer
         }>  
-        
             <Text>{data.title}</Text>
-
-
             <Pressable 
                 onPress={onPress}
                 style={[

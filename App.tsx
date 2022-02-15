@@ -8,6 +8,7 @@ import { Fragment } from 'react';
 import Login from './screens/Login/Login';
 import Items from './screens/Items';
 import Layout from './components/Layout';
+import Wheel from './screens/Wheel';
 
 export default function App() {
 
@@ -24,6 +25,8 @@ export default function App() {
 					return <Login />
 				case AppStages.Items:
 					return <Items />
+				case AppStages.Wheel:
+					return <Wheel />
 				default: 
 					return null;
 			}

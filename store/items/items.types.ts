@@ -11,7 +11,9 @@ export type ItemsState = {
 enum ItemsReducerActions {
     addItem = "Items/Reducer-Add-Item",
     removeItem = "Items/Reducer-Remove-Item",
+    removeItemById = "Items/Remove-Item-By-Id",
     changeItemColor = "Items/Reducer-Change-Item-Color",
+    changeItemTitle = "Items/Reducer-Change-Item-Title",
     toggleSelectedItem = "Items/Reducer-Toggle-Selected-Item",
 }
 

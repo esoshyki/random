@@ -24,17 +24,29 @@ export const itemsReducer = (
                 items: state.items.filter(item => item.title !== payload.title)
             }
 
-        case (ItemsAction.reducer.changeItemColor):
-            const item : Item = payload;
+        case ItemsAction.reducer.removeItemById:
             return {
                 ...state,
-                items: state.items.map(el => {
-                    if (el.title === item.title) {
-                        return {...item}
-                    } else {
-                        return el
-                    }
-                })
+                items: state.items.filter((el, idx) => idx !== payload)
+            };
+
+        case (ItemsAction.reducer.changeItemColor):
+
+            return {
+                ...state,
+                items: state.items.map((item, idx) => idx !== payload.idx ? item : ({
+                    title: item.title,
+                    color: payload.color
+                }))
+            }
+
+        case ItemsAction.reducer.changeItemTitle:
+            return {
+                ...state,
+                items: state.items.map((item, idx) => idx !== payload.idx ? item : ({
+                    title: payload.title,
+                    color: item.color
+                }))
             }
 
         case (ItemsAction.reducer.toggleSelectedItem):
@@ -42,8 +54,7 @@ export const itemsReducer = (
             return {
                 ...state,
                 selected: payload
-            }
-            
+            }  
 
         default:
             return state

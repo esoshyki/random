@@ -143,13 +143,6 @@ export const colors = {
     White: "#FFFFFF",
 };
 
-export const theme = {
-    colors: {
-        background: colors.Honeydew,
-        contrast: colors.Brown
-    }
-}
-
 export const getRandomColors = (count: number) => {
     return Object.values(colors).sort(() => 0.5 - Math.random()).slice(0, count);
 }

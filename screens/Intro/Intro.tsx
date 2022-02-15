@@ -1,7 +1,7 @@
 import { useAssets } from 'expo-asset';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect, useState } from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View, Image, Dimensions } from 'react-native';
 import Animated, {
 	useSharedValue,
 	useAnimatedStyle,
@@ -99,7 +99,14 @@ const Intro = () => {
 						source={assets[0]} 
 						width={100} 
 						height={80} /> : null}
-					<Text>Magic Random</Text>
+					<Text 
+						style={
+							{
+								textAlign: "center"
+							}
+						}>
+						Magic Random
+					</Text>
 				</Animated.View>
 			)}
 

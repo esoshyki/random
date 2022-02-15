@@ -1,4 +1,4 @@
-const INTRO_ANIMATION_LENGTH = 2000;
+const INTRO_ANIMATION_LENGTH = 1000;
 
 export const settings = {
     INTRO_ANIMATION_LENGTH
