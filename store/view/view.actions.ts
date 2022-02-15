@@ -15,3 +15,8 @@ export const setHideContent = (payload: boolean) : IAction => ({
     type: ViewActions.reducer.SetHideContent,
     payload,
 })
+
+export const toggleColorPicker = (payload?: number) : IAction => ({
+    type: ViewActions.reducer.ToggleColorPickerFor,
+    payload
+})

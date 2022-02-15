@@ -7,6 +7,7 @@ import Intro from './screens/Intro/Intro';
 import { Fragment } from 'react';
 import Login from './screens/Login/Login';
 import Items from './screens/Items';
+import Layout from './components/Layout';
 
 export default function App() {
 
@@ -14,13 +15,24 @@ export default function App() {
 		const stage = useSelector(select.view.stage);
 
 		console.log(stage);
+
+		const getContent = () => {
+			switch(stage) {
+				case AppStages.Intro:
+					return <Intro />
+				case AppStages.Login:
+					return <Login />
+				case AppStages.Items:
+					return <Items />
+				default: 
+					return null;
+			}
+		}
 		
 		return (
-			<Fragment>
-				{stage === AppStages.Intro && <Intro />}
-				{stage === AppStages.Login && <Login />}
-				{stage === AppStages.Items && <Items />}
-			</Fragment>
+			<Layout>
+				{getContent()}
+			</Layout>
 			)
 
 	};

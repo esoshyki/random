@@ -7,11 +7,13 @@ export enum AppStages {
 export type ViewState = {
     stage: AppStages,
     hideContent: boolean;
+    showColorPickerFor?: number;
 };
 
 enum ViewReducerActions {
     SetAppStage = "View/Set-App-Stage",
-    SetHideContent = "View/Set-Hide-Content"
+    SetHideContent = "View/Set-Hide-Content",
+    ToggleColorPickerFor = "View/Toggle-Color-Picker-For",
 };
 
 enum ViewSagasActions {

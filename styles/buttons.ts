@@ -1,14 +1,18 @@
 import { StyleSheet } from "react-native";
+import { colors } from "./colors";
 
 export const Buttons = StyleSheet.create({
     common: {
         margin: 20,
-        paddingLeft: 20,
-        paddingRight: 20,
-        paddingVertical: 10,
-        borderRadius: 25,
-        backgroundColor: "#2f2f2f",
+        paddingHorizontal: 30,
+        paddingVertical: 20,
+        borderRadius: 35,
+        backgroundColor: colors.blue,
         elevation: 3,
+        display: "flex",
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "center"
     },
 
     commonText: {

@@ -9,6 +9,7 @@ import Animated, {
 	withSequence,
   } from 'react-native-reanimated';
 import { useDispatch } from 'react-redux';
+import { settings } from '../../settings';
 import { SetAppStage } from '../../store/view/view.actions';
 import { AppStages } from '../../store/view/view.types';
 
@@ -45,8 +46,8 @@ const Intro = () => {
 
 	const restoreOpacity = () => {
 		hidden.value = withSequence(
-			withTiming(1, { duration: 3000 }),
-			withTiming(0, { duration: 3000 }));
+			withTiming(1, { duration: settings.INTRO_ANIMATION_LENGTH }),
+			withTiming(0, { duration: settings.INTRO_ANIMATION_LENGTH  }));
 	};
 
     const animatedStyles = useAnimatedStyle(() => {
@@ -110,7 +111,6 @@ const Intro = () => {
 const styles = StyleSheet.create({
     container: {
       	flex: 1,  
-      	backgroundColor: '#fff',
       	alignItems: 'center',
       	justifyContent: 'center',
     },

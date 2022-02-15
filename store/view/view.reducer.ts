@@ -20,6 +20,12 @@ export const viewReducer = (state = init, action : IAction) : ViewState => {
                 ...state,
                 hideContent: payload
             })
+
+        case (ViewActions.reducer.ToggleColorPickerFor):
+            return ({
+                ...state,
+                showColorPickerFor: payload
+            })
         default:
             return state
     }
