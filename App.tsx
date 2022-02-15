@@ -12,6 +12,8 @@ export default function App() {
 
 	const Content = () => {
 		const stage = useSelector(select.view.stage);
+
+		console.log(stage);
 		
 		return (
 			<Fragment>

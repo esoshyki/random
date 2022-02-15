@@ -18,7 +18,6 @@ const Login = () => {
     const opacity = useSharedValue(1);
 
     const skipLogin = () => {
-        console.log("skip");
         dispatch(changeAppStage(AppStages.Items));
     };
 
@@ -26,7 +25,7 @@ const Login = () => {
 		return {
 			opacity: opacity.value
 		}
-	}, [null]);
+	});
 
     useEffect(() => {
         if (hideContent) {
@@ -38,7 +37,7 @@ const Login = () => {
     return (
         <Animated.View 
             style={[Styles.Layouts.centered, animatedStyles]}
-            entering={fadeIn.duration(3000)}>
+            >
             <Text>Login</Text>
 
             <Button  

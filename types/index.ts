@@ -1,3 +1,4 @@
+import { ItemsState } from "../store/items/items.types";
 import { ViewState } from "../store/view/view.types";
 
 export interface IAction {
@@ -6,5 +7,6 @@ export interface IAction {
 };
 
 export type State = {
-    view: ViewState
+    view: ViewState,
+    items: ItemsState
 };
