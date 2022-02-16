@@ -55,7 +55,6 @@ const AddItem = () => {
 
     return (
         <Animated.View style={{
-            position: "relative"
         }}>
             <TextInput 
                 style={[Styles.Inputs.common, {

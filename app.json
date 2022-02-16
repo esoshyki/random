@@ -23,7 +23,8 @@
             "adaptiveIcon": {
                 "foregroundImage": "./assets/adaptive-icon.png",
                 "backgroundColor": "#F0FFF0"
-            }
+            },
+            "package": "com.manao.random"
         },
         "web": {
             "favicon": "./assets/favicon.png"
