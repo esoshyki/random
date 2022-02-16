@@ -12,6 +12,7 @@ import { useDispatch } from 'react-redux';
 import { settings } from '../../settings';
 import { SetAppStage } from '../../store/view/view.actions';
 import { AppStages } from '../../store/view/view.types';
+import { logoImage, manaoImage } from '../../assets/images';
 
 
 enum introStages {
@@ -25,9 +26,6 @@ const Intro = () => {
 	const dispatch = useDispatch();
 
     const [stage, setStage] = useState<introStages | null>(introStages.title);
-	const [assets, error] = useAssets([
-		require("../../assets/logo.png")
-	]);
 
 	const hidden = useSharedValue(0);
 
@@ -77,9 +75,14 @@ const Intro = () => {
 			{stage === introStages.congratz && (
 				<Animated.View 
 					style={animatedStyles}>
-					<Text style={styles.title}>
-						ESOTERIC-SOFT (c)
-					</Text>
+					<Image 
+						style={{
+							width: 174,
+							height: 35
+						}}
+						source={manaoImage} 
+						width={175} 
+						height={35} />
 				</Animated.View>
 			)}
 
@@ -89,14 +92,14 @@ const Intro = () => {
 						width: 100,
 						height: 80,
 					},animatedStyles]}>
-					{assets ? <Image 
+					<Image 
 						style={{
 							width: 120,
 							height: 100
 						}}
-						source={assets[0]} 
+						source={logoImage} 
 						width={100} 
-						height={80} /> : null}
+						height={80} />
 					<Text 
 						style={
 							{
