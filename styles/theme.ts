@@ -12,6 +12,11 @@ export const theme = {
             fontSize: 14,
             fontWeight: "800",
             color: colors.Orange
+        },
+        winner: {
+            fontSize: 20,
+            fontWeight: "bold",
+            color: colors.Aquamarine
         }
     })
 }

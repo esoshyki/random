@@ -39,7 +39,6 @@ const Intro = () => {
 			return setStage(introStages.icon)
 		};
 		if (stage === introStages.icon) {
-			console.log("here");
 			return dispatch(SetAppStage(AppStages.Login))
 		}
 	}
@@ -58,7 +57,6 @@ const Intro = () => {
 
 	useEffect(() => {
 		restoreOpacity();
-		console.log(stage);
 		setTimeout(() => {
 			nextStage()
 		}, 7000)

@@ -12,7 +12,6 @@ export const itemsReducer = (
     switch (type) {
 
         case (ItemsAction.reducer.addItem):
-            console.log(`item`, payload)
             return {
                 ...state,
                 items: [...state.items, payload]

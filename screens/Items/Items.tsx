@@ -42,7 +42,6 @@ const Items = () => {
         } else {
             dispatch(SetAppStage(AppStages.Wheel))
         }
-        console.log("START!")
     };
 
     return (

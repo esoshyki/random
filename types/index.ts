@@ -10,3 +10,8 @@ export type State = {
     view: ViewState,
     items: ItemsState
 };
+
+export type CircleSector = {
+    percent: number;
+    color: string;
+}

@@ -49,15 +49,9 @@ const AddItem = () => {
 
     useEffect(() => {
         if (typeof selected === "number") {
-            console.log("SELECTED!");
-            console.log(selected);
             setText(items[selected].title)
         };
     }, [selected]);
-
-    useEffect(() => {
-        console.log(items);
-    }, [items])
 
     return (
         <Animated.View style={{

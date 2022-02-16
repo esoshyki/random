@@ -5,7 +5,6 @@ import { SetAppStage, setHideContent } from './view.actions'
 
 function* changeAppStageWorker(action: IAction) {
     const stage : AppStages = action.payload;
-    console.log(stage);
     yield put(setHideContent(true));
     yield delay(3000);
     yield put(SetAppStage(stage));
