@@ -58,7 +58,8 @@ const AddItem = () => {
         }}>
             <TextInput 
                 style={[Styles.Inputs.common, {
-                    elevation: 3
+                    elevation: 6,
+                    zIndex: 6
                 }]}
                 onChange={onChange}
                 value={text}
