@@ -41,7 +41,6 @@ const Items = () => {
         } 
 
         if (items.some(item => item.color === "#fff")) {
-            console.log("HERE");
             return setError("Choose colors pls")         
         }
         

@@ -5565,11 +5565,6 @@ url-parse@^1.4.4:
     querystringify "^2.1.1"
     requires-port "^1.0.0"
 
-use-assets@^1.1.6:
-  version "1.1.6"
-  resolved "https://registry.yarnpkg.com/use-assets/-/use-assets-1.1.6.tgz#69c0dea21b2d4bdd851cbe53dd452b6a629a0512"
-  integrity sha512-Yg+UG2X5b4mB7uIy61Og0H7HdSp2Io5ZEhSzEaXGqBtLHFUD1yhz1eje/ll7jqwlE3hpAgeKvstEVN2fXyCyRQ==
-
 use-subscription@^1.0.0:
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/use-subscription/-/use-subscription-1.5.1.tgz#73501107f02fad84c6dd57965beb0b75c68c42d1"

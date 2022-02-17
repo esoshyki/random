@@ -1,4 +1,3 @@
-import { useAssets } from 'expo-asset';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect, useState } from 'react';
 import { StyleSheet, Text, View, Image, Dimensions } from 'react-native';
