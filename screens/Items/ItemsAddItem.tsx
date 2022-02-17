@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { TextInput, Text } from "react-native";
-import Animated from "react-native-reanimated";
 import { Styles } from "../../styles";
 import { NativeSyntheticEvent, TextInputChangeEventData, View } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
@@ -54,7 +53,7 @@ const AddItem = () => {
     }, [selected]);
 
     return (
-        <Animated.View style={{
+        <View style={{
         }}>
             <TextInput 
                 style={[Styles.Inputs.common, {
@@ -77,7 +76,7 @@ const AddItem = () => {
                 </Text>
             </View>
 
-        </Animated.View>
+        </View>
     )
 };
 

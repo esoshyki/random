@@ -1,17 +1,16 @@
 import Animated from "react-native-reanimated";
-import { fadeIn } from "../../styles/animations";
-import { Text, StyleSheet, Pressable, View, ScrollView, Dimensions } from "react-native";
+import { Animations, fadeIn } from "../../styles/animations";
+import { Text, StyleSheet, Pressable, View, ScrollView } from "react-native";
 import { Styles } from "../../styles";
 import { useDispatch, useSelector } from "react-redux";
 import { select } from "../../store/select";
 import AddItem from "./ItemsAddItem";
 import Item from "./Item";
 import { colors } from "../../styles/colors";
-import Button from "../../components/Button";
 import { removeItem, toggleSelectedItems } from "../../store/items/items.action";
 import ColorPicker from "../../components/ColorPicker/ColorPicker";
 import BottomLayoutButton from "../../components/Button/BottomLayoutButton";
-import { useState } from "react";
+import React, { useState } from "react";
 import { theme } from "../../styles/theme";
 import { SetAppStage } from "../../store/view/view.actions";
 import { AppStages } from "../../store/view/view.types";
@@ -50,7 +49,7 @@ const Items = () => {
                 Styles.Layouts.flexVerticalStart,
                 styles.container
             ]}
-            entering={fadeIn.duration(3000)}>
+            entering={Animations.fadeIn}>
             <Text style={styles.title}>ITEMS</Text>
 
             <AddItem />
@@ -106,7 +105,8 @@ const Items = () => {
 const styles = StyleSheet.create({
     container: {
         position: "relative",
-        paddingBottom: 40
+        paddingBottom: 40,
+        zIndex: 20
     },
     itemsContainer: {
         justifyContent: "flex-start",

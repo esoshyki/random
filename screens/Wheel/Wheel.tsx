@@ -77,7 +77,7 @@ const Wheel = () => {
         <Animated.View 
             style={[
                 Styles.Layouts.centered,
-                { position: "relative" }
+                { flex: 1, zIndex: 25 }
             ]}>
 
             {winner ? (
