@@ -1,8 +1,6 @@
 import { Dimensions, StyleSheet, Image, Easing, Animated, Text, View, Button } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
-import BottomLayoutButton from "../../components/Button/BottomLayoutButton";
 import { select } from "../../store/select";
-import { Styles } from "../../styles";
 import { colors } from "../../styles/colors";
 import { CircleSector } from "../../types";
 import { Item } from "../../store/items/items.types";
@@ -14,6 +12,7 @@ import { theme } from "../../styles/theme";
 import { SetAppStage } from "../../store/view/view.actions";
 import { AppStages } from "../../store/view/view.types";
 import { itemsRestore } from "../../store/items/items.action";
+import { Styles } from "../../styles";
 
 const getDiameter = () => Dimensions.get("window").width * 0.8;
 
@@ -85,15 +84,8 @@ const Wheel = () => {
     return (
         <View 
             style={[
-                { 
-                    position: "relative",
-                    display: 'flex',
-                    height: Dimensions.get("window").height,
-                    justifyContent: "flex-start",
-                    alignItems: "center",
-                    elevation: 100,
-                    zIndex: 100
-                }
+                Styles.Layouts.flexVerticalStart,
+                styles.container
             ]}>
 
             <View style={{position: "absolute", right: 20, top: 20, zIndex: 100, elevation: 100}}>
@@ -146,7 +138,7 @@ const Wheel = () => {
             </Animated.View>
 
             <View style={{width: 200, marginTop: 20}}>
-                <Button title="GO" onPress={start}/>
+                <Button title="GO!" onPress={start}/>
             </View>
 
         </View>
@@ -154,6 +146,11 @@ const Wheel = () => {
 };
 
 const styles = StyleSheet.create({
+    container: {
+        position: "relative",
+        paddingBottom: 40,
+        zIndex: 20
+    },
     winner: {
         marginVertical: 20,
         height: 30,
