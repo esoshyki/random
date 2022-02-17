@@ -133,7 +133,7 @@ const styles = StyleSheet.create({
     },
     pointer: {
         position: "absolute",
-        top: 120,
+        top: 50,
         left: getDiameter() / 2 - 0,
         width: 80,
         height: 80,
