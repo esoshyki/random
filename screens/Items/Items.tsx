@@ -37,10 +37,15 @@ const Items = () => {
 
     const start = () => {
         if (items.length <= 1) {
-            setError("The wheel should have at least two items")
-        } else {
-            dispatch(SetAppStage(AppStages.Wheel))
+            return setError("The wheel should have at least two items")
+        } 
+
+        if (items.some(item => item.color === "#fff")) {
+            console.log("HERE");
+            return setError("Choose colors pls")         
         }
+        
+        dispatch(SetAppStage(AppStages.Wheel))
     };
 
     return (

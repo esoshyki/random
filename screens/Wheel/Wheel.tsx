@@ -56,6 +56,7 @@ const Wheel = () => {
 
     const start = () => {
         console.log(started);
+        console.log(started);
         if (!started) {
             wheelOn();
             setStarted(true);
@@ -85,7 +86,6 @@ const Wheel = () => {
         <View 
             style={[
                 { 
-                    flex: 1, 
                     position: "relative", 
                     justifyContent: "flex-start",
                     alignItems: "center"
@@ -141,7 +141,9 @@ const Wheel = () => {
 
             </Animated.View>
 
-            <BottomLayoutButton title="GO" onPress={start}/>
+            <View style={{width: 200, marginTop: 20}}>
+                <Button title="GO" onPress={start} />
+            </View>
 
         </View>
     )
