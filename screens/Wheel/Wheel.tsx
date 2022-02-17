@@ -9,7 +9,7 @@ import { Item } from "../../store/items/items.types";
 import utils from "../../utils";
 import { Path, Svg } from "react-native-svg";
 import { pointerImage } from "../../assets/images";
-import { useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import { theme } from "../../styles/theme";
 import { SetAppStage } from "../../store/view/view.actions";
 import { AppStages } from "../../store/view/view.types";
@@ -86,6 +86,7 @@ const Wheel = () => {
         <View 
             style={[
                 { 
+                    position: "relative",
                     display: 'flex',
                     height: Dimensions.get("window").height,
                     justifyContent: "flex-start",
