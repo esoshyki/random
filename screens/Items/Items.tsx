@@ -36,7 +36,7 @@ const Items = () => {
     };
 
     const start = () => {
-        if (items.length < 1) {
+        if (items.length <= 1) {
             setError("The wheel should have at least two items")
         } else {
             dispatch(SetAppStage(AppStages.Wheel))
