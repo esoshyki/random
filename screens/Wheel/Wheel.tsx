@@ -89,11 +89,13 @@ const Wheel = () => {
                     display: 'flex',
                     height: Dimensions.get("window").height,
                     justifyContent: "flex-start",
-                    alignItems: "center"
+                    alignItems: "center",
+                    elevation: 100,
+                    zIndex: 100
                 }
             ]}>
 
-            <View style={{position: "absolute", right: 20, top: 20}}>
+            <View style={{position: "absolute", right: 20, top: 20, zIndex: 100, elevation: 100}}>
             <Button 
                 title="Back"
                 onPress={() => {
@@ -143,7 +145,7 @@ const Wheel = () => {
             </Animated.View>
 
             <View style={{width: 200, marginTop: 20}}>
-                <Button title="GO" onPress={start} />
+                <Button title="GO" onPress={start}/>
             </View>
 
         </View>
@@ -169,6 +171,7 @@ const styles = StyleSheet.create({
         height: getDiameter(),
         borderRadius: getDiameter() / 2,
         borderColor: colors.Violet,
+        overflow: "hidden"
     }
 });
 

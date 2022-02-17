@@ -20,7 +20,7 @@ const Layout = ({ children } : Props) => {
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: colors.Honeydew
+        backgroundColor: colors.Honeydew,
     }
 })
 
