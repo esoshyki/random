@@ -15,6 +15,7 @@ enum ItemsReducerActions {
     changeItemColor = "Items/Reducer-Change-Item-Color",
     changeItemTitle = "Items/Reducer-Change-Item-Title",
     toggleSelectedItem = "Items/Reducer-Toggle-Selected-Item",
+    restore = "Items/Reducer-Restore",
 }
 
 enum ItemsSagasActions {

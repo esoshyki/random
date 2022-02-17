@@ -1,5 +1,5 @@
-import { Dimensions, StyleSheet, Image, Easing, Animated, Text } from "react-native";
-import { useSelector } from "react-redux";
+import { Dimensions, StyleSheet, Image, Easing, Animated, Text, View, Button } from "react-native";
+import { useDispatch, useSelector } from "react-redux";
 import BottomLayoutButton from "../../components/Button/BottomLayoutButton";
 import { select } from "../../store/select";
 import { Styles } from "../../styles";
@@ -11,10 +11,15 @@ import { Path, Svg } from "react-native-svg";
 import { pointerImage } from "../../assets/images";
 import { useRef, useState } from "react";
 import { theme } from "../../styles/theme";
+import { SetAppStage } from "../../store/view/view.actions";
+import { AppStages } from "../../store/view/view.types";
+import { itemsRestore } from "../../store/items/items.action";
 
 const getDiameter = () => Dimensions.get("window").width * 0.8;
 
 const Wheel = () => {
+
+    const dispatch = useDispatch();
 
     const degs = useRef(new Animated.Value(0));
 
@@ -44,13 +49,16 @@ const Wheel = () => {
             useNativeDriver: true
         }).start(() => {
             getWinner();
+            setStarted(false);
         });
         
     };
 
     const start = () => {
+        console.log(started);
         if (!started) {
-            wheelOn()
+            wheelOn();
+            setStarted(true);
         }
     };
 
@@ -74,22 +82,35 @@ const Wheel = () => {
     });
 
     return (
-        <Animated.View 
+        <View 
             style={[
-                Styles.Layouts.centered,
-                { position: "relative", zIndex: 30 }
+                { 
+                    flex: 1, 
+                    position: "relative", 
+                    justifyContent: "flex-start",
+                    alignItems: "center"
+                }
             ]}>
 
-            {winner ? (
-                <Text 
-                    style={[
-                        styles.winner,
-                        theme.typography.winner
-                    ]}
-                    
-                    >
-                    {winner}</Text>) : null}
+            <View style={{position: "absolute", right: 20, top: 20}}>
+            <Button 
+                title="Back"
+                onPress={() => {
+                    dispatch(itemsRestore());
+                    dispatch(SetAppStage(AppStages.Items));
+                }
+            }
+                />
+            </View>
 
+            <View style={styles.winner}>
+                {winner ? (
+                    <Text style={[theme.typography.winner]}>
+                        {winner}
+                    </Text>) 
+                : null}
+            </View>
+            
             <Image 
                 source={pointerImage}
                 width={80}
@@ -120,37 +141,31 @@ const Wheel = () => {
 
             </Animated.View>
 
-            <BottomLayoutButton title="GO!" onPress={start}/>
+            <BottomLayoutButton title="GO" onPress={start}/>
 
-        </Animated.View>
+        </View>
     )
 };
 
 const styles = StyleSheet.create({
     winner: {
-        position: "absolute",
-        top: 20,
+        marginVertical: 20,
+        height: 30,
     },
     pointer: {
-        position: "absolute",
-        top: 50,
-        left: getDiameter() / 2 - 0,
         width: 80,
         height: 80,
         transform: [
             {rotate: "-135deg"}
-        ]
+        ],
+        marginVertical: 40
     },
     wheel: {
         position: "relative",
-        flexDirection: 'column',
-        alignItems: "center",
-        justifyContent: "center",
         width: getDiameter(),
         height: getDiameter(),
         borderRadius: getDiameter() / 2,
-        borderWidth: 2,
-        borderColor: colors.Violet
+        borderColor: colors.Violet,
     }
 });
 

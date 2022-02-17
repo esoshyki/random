@@ -53,7 +53,12 @@ export const itemsReducer = (
             return {
                 ...state,
                 selected: payload
-            }  
+            }
+
+        case (ItemsAction.reducer.restore):
+            return {
+                items: []
+            }
 
         default:
             return state

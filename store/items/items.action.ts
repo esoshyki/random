@@ -37,3 +37,7 @@ export const toggleSelectedItems = (payload?: number) : IAction => ({
     payload
 });
 
+export const itemsRestore = () : IAction => ({
+    type: ItemsAction.reducer.restore,
+})
+
