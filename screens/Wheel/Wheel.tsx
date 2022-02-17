@@ -86,7 +86,8 @@ const Wheel = () => {
         <View 
             style={[
                 { 
-                    position: "relative", 
+                    display: 'flex',
+                    height: Dimensions.get("window").height,
                     justifyContent: "flex-start",
                     alignItems: "center"
                 }

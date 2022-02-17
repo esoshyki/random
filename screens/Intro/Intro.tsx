@@ -89,8 +89,10 @@ const Intro = () => {
 			{stage === introStages.icon && (
 				<Animated.View 
 					style={[{
-						width: 100,
-						height: 80,
+						width: Dimensions.get("window").width,
+						height: Dimensions.get("window").height,
+						justifyContent: "center",
+						alignItems: "center"
 					},animatedStyles]}>
 					<Image 
 						style={{
@@ -118,7 +120,7 @@ const Intro = () => {
 
 const styles = StyleSheet.create({
     container: {
-      	flex: 1,  
+		height: Dimensions.get("window").height,
       	alignItems: 'center',
       	justifyContent: 'center',
     },
