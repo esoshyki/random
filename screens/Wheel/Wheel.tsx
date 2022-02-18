@@ -137,7 +137,8 @@ const Wheel = () => {
 
             </Animated.View>
 
-            <View style={{width: 200, marginTop: 20}}>
+            <View style={{width: 200, marginTop: 20, zIndex: 6,
+        elevation: 6,}}>
                 <Button title="GO!" onPress={start}/>
             </View>
 
@@ -149,7 +150,8 @@ const styles = StyleSheet.create({
     container: {
         position: "relative",
         paddingBottom: 40,
-        zIndex: 20
+        zIndex: 6,
+        elevation: 6,
     },
     winner: {
         marginVertical: 20,
