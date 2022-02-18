@@ -13,19 +13,19 @@ import { SetAppStage } from "../../store/view/view.actions";
 import { AppStages } from "../../store/view/view.types";
 import { itemsRestore } from "../../store/items/items.action";
 import { Styles } from "../../styles";
+import BottomLayoutButton from "../../components/Button/BottomLayoutButton";
 
 const getDiameter = () => Dimensions.get("window").width * 0.8;
 
 const Wheel = () => {
 
     const dispatch = useDispatch();
-
+    const items = useSelector(select.items.items);
     const degs = React.useRef(new Animated.Value(0));
 
     const [started, setStarted] = useState(false);
     const [finishDeg, setFinishDeg] = useState(0);
     const [winner, setWinner] = useState("");
-    const items = useSelector(select.items.items);
 
     const [message, setMessage] = useState("");
 
@@ -90,7 +90,7 @@ const Wheel = () => {
     }, [])
 
     return (
-        <View 
+        <Animated.View 
             style={[
                 Styles.Layouts.flexVerticalStart,
                 styles.container
@@ -149,12 +149,9 @@ const Wheel = () => {
 
             </Animated.View>
 
-            <View style={{width: 200, marginTop: 20, zIndex: 6,
-        elevation: 6,}}>
-                <Button title="GO!" onPress={start}/>
-            </View>
+            <BottomLayoutButton title="GO!" onPress={start}/>
 
-        </View>
+        </Animated.View>
     )
 };
 
