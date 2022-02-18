@@ -1,3 +1,4 @@
+import React, { useEffect, useRef, useState } from "react";
 import { Dimensions, StyleSheet, Image, Easing, Animated, Text, View, Button } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { select } from "../../store/select";
@@ -7,7 +8,6 @@ import { Item } from "../../store/items/items.types";
 import utils from "../../utils";
 import { Path, Svg } from "react-native-svg";
 import { pointerImage } from "../../assets/images";
-import React, { useRef, useState } from "react";
 import { theme } from "../../styles/theme";
 import { SetAppStage } from "../../store/view/view.actions";
 import { AppStages } from "../../store/view/view.types";
@@ -20,12 +20,14 @@ const Wheel = () => {
 
     const dispatch = useDispatch();
 
-    const degs = useRef(new Animated.Value(0));
+    const degs = React.useRef(new Animated.Value(0));
 
     const [started, setStarted] = useState(false);
     const [finishDeg, setFinishDeg] = useState(0);
     const [winner, setWinner] = useState("");
     const items = useSelector(select.items.items);
+
+    const [message, setMessage] = useState("");
 
 
     const getWinner = () => {
@@ -81,6 +83,12 @@ const Wheel = () => {
           return <Path d={pathData} fill={slice.color} key={pathData}/>;
     });
 
+    useEffect(() => {
+        setTimeout(() => {
+            setMessage("LIVE")
+        }, 3000)
+    }, [])
+
     return (
         <View 
             style={[
@@ -88,15 +96,19 @@ const Wheel = () => {
                 styles.container
             ]}>
 
-            <View style={{position: "absolute", right: 20, top: 20, zIndex: 100, elevation: 100}}>
-            <Button 
-                title="Back"
-                onPress={() => {
-                    dispatch(itemsRestore());
-                    dispatch(SetAppStage(AppStages.Items));
+            <View>
+                <Text>{message}</Text>
+            </View>
+
+            <View style={{position: "absolute", right: 20, top: 20}}>
+                <Button 
+                    title="Back"
+                    onPress={() => {
+                        dispatch(itemsRestore());
+                        dispatch(SetAppStage(AppStages.Items));
+                    }
                 }
-            }
-                />
+                    />
             </View>
 
             <View style={styles.winner}>
