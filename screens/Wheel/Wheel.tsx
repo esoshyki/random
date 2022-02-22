@@ -159,8 +159,6 @@ const styles = StyleSheet.create({
     container: {
         position: "relative",
         paddingBottom: 40,
-        zIndex: 6,
-        elevation: 6,
     },
     winner: {
         marginVertical: 20,
