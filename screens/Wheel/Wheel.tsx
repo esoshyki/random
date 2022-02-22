@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Dimensions, StyleSheet, Image, Easing, Animated, Text, View, Button } from "react-native";
+import { Dimensions, StyleSheet, Image, Text, View, Button } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { select } from "../../store/select";
 import { colors } from "../../styles/colors";
@@ -14,6 +14,8 @@ import { AppStages } from "../../store/view/view.types";
 import { itemsRestore } from "../../store/items/items.action";
 import { Styles } from "../../styles";
 import BottomLayoutButton from "../../components/Button/BottomLayoutButton";
+import Animated, { useSharedValue, useAnimatedStyle, withTiming, Easing } from 'react-native-reanimated';
+
 
 const getDiameter = () => Dimensions.get("window").width * 0.8;
 
@@ -21,7 +23,7 @@ const Wheel = () => {
 
     const dispatch = useDispatch();
     const items = useSelector(select.items.items);
-    const degs = React.useRef(new Animated.Value(0));
+    const degs = useSharedValue(0);
 
     const [started, setStarted] = useState(false);
     const [finishDeg, setFinishDeg] = useState(0);
@@ -39,21 +41,28 @@ const Wheel = () => {
 
     const wheelOn = () => {
         setWinner("...");
-        const random = 0.5 + (0.5 * Math.random());
+        const random = 500 + (500 * Math.random());
         const finish = finishDeg + 500 * Math.random();
-        degs.current = new Animated.Value(0);
         setFinishDeg(finish);
-        Animated.timing(degs.current, {
-            toValue: random,
+        degs.value = withTiming(random, {
             duration: 5000,
-            easing: Easing.out(Easing.ease),
-            useNativeDriver: true
-        }).start(() => {
-            getWinner();
-            setStarted(false);
-        });
-        
+            easing: Easing.out(Easing.exp),
+        }, (finished) => {
+            if (finished) {
+                getWinner()
+            }
+        })
     };
+
+    const animatedStyles = useAnimatedStyle(() => {
+        return {
+            transform: [
+                {
+                    rotate: `${degs.value}deg`
+                }
+            ]
+        }
+    })
 
     const start = () => {
         console.log(started);
@@ -128,14 +137,7 @@ const Wheel = () => {
 
             <Animated.View style={[
                 styles.wheel,
-                {
-                    transform: [
-                        { rotate: degs.current.interpolate({
-                            inputRange: [0, 1],
-                            outputRange: ["0deg", "1000deg"]
-                        }) }
-                    ]
-                }
+                animatedStyles
             ]} >
                 
                 <Svg 
