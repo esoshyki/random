@@ -11,7 +11,8 @@ const Layout = ({ children } : Props) => {
 
     return (
         <View style={[
-            styles.container
+            styles.container,
+            Styles.Layouts.centered
             ]}>
             {children}
         </View>
